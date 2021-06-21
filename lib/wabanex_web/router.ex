@@ -1,12 +1,14 @@
-defmodule WabanexWeb.Router do
+defmodule WabanexWeb.Router do # This file is the starting point of our application.
   use WabanexWeb, :router
 
-  pipeline :api do
+  pipeline :api do # Here it is defining a pipeline that basically says that all routes that are defined using pipe_through :api will only accept JSON
     plug :accepts, ["json"]
   end
 
   scope "/api", WabanexWeb do
     pipe_through :api
+
+    get "/", IMCController, :index # Here I am creating a new get route, the IMCController will be the one treating the request and the action of this controller is :index
   end
 
   # Enables LiveDashboard only for development
