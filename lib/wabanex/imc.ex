@@ -22,7 +22,7 @@ defmodule Wabanex.IMC do # module is a collection of functions
     line
     |> String.split(",")
     |> List.update_at(1, &String.to_float/1) # IO.inspect() here will print what the String.split() will return. &String.to_float/1 is the same thing as usaing a anonymous function (fn element -> String.to_float(element) end) but shorter. The 1 from the first parameter will get the first first position element
-    |> List.update_at(2, &String.to_float/1) # A dictionary/hash table here is created as %{"Key" => 0.00}, I am using a => here because the key is a string.
+    |> List.update_at(2, &String.to_float/1) # A dictionary/hash table here is created as %{"Key" => 0.00}, I am using a => here because the key is a string. The /1 is how many arguments the function asks for (in this case it is 1).
     |> calculate_imc()
   end
 
