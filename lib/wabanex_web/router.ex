@@ -11,6 +11,13 @@ defmodule WabanexWeb.Router do # This file is the starting point of our applicat
     get "/", IMCController, :index # Here I am creating a new get route, the IMCController will be the one treating the request and the action of this controller is :index
   end
 
+  scope "/api" do
+    pipe_through :api
+
+    forward "/graphql", Absinthe.Plug, schema: WabanexWeb.Schema
+    forward "/graphiql", Absinthe.Plug.GraphiQL, schema: WabanexWeb.Schema
+  end
+
   # Enables LiveDashboard only for development
   #
   # If you want to use the LiveDashboard in production, you should put

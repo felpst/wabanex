@@ -12,7 +12,7 @@ def call(id) do
     {:error, "Invalid UUID"}
   end
 
-  defp handle_reponse({:ok, uuid}) do
+  defp handle_response({:ok, uuid}) do
     case Repo.get(User, uuid) do # This case is simillar to a switch case in other languages, and it is used to handle with possibilities.
       nil -> {:error, "User not found"}
       user -> {:ok, user}
